@@ -29,7 +29,6 @@ create table TRANSACTION (
 
 create table FEES (
                              id integer identity primary key,
-                             origin_acc integer NOT NULL,
-                             destination_acc integer NOT NULL,
-                            amount float NOT NULL
+                             USER_TYPE VARCHAR(45) NOT NULL,
+                             fee_amount float NOT NULL
 );
