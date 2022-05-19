@@ -16,8 +16,13 @@ public class Account {
 
     private @Column("IBAN") String IBAN;
 
-    private @Column("balance") Float balance;
+    private @Column("balance") float balance;
 
-    private @Column("USER_TYPE") UserType userType;
+    private @Column("USER_TYPE") String userType;
 
+    public Account(String iban, float balance, String userType){
+        this.IBAN= iban;
+        this.balance = balance;
+        this.userType = userType;
+    }
 }

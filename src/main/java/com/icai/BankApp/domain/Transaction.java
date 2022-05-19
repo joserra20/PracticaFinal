@@ -17,4 +17,7 @@ public class Transaction {
     private @Column("origin_acc") UserType originAcc;
 
     private @Column("destination_acc") String destinationAcc;
+
+    private @Column("amount") float amount;
+
 }

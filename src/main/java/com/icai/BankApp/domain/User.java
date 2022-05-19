@@ -22,9 +22,9 @@ public class User {
 
     private @Column("EMAIL") String email;
 
-    private @Column("USER_TYPE") UserType userType;
+    private @Column("USER_TYPE") String userType;
 
-    public User(String firstName, String lastName, String password, String email, UserType userType) {
+    public User(String firstName, String lastName, String password, String email, String userType) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;

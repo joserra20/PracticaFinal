@@ -18,18 +18,18 @@ create table ACCOUNT (
 
 create table ACCOUNT_USER (
                          account_id integer,
-                         user_id VARCHAR(45) NOT NULL,
+                         user_id integer NOT NULL,
                          PRIMARY KEY (account_id,user_id)
 );
 
 create table TRANSACTION (
                               id integer identity primary key,
                               origin_acc integer NOT NULL,
-                              destination_acc integer NOT NULL
+                              destination_acc integer NOT NULL,
+                              amount integer NOT NULL
 );
 
 create table FEES (
-                             id integer identity primary key,
-                             USER_TYPE VARCHAR(45) NOT NULL,
+                             USER_TYPE VARCHAR(45) primary key,
                              fee_amount float NOT NULL
 );
