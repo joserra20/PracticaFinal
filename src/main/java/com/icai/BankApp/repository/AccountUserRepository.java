@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface AccountUserRepository {
+public interface AccountUserRepository extends CrudRepository<AccountUser, Long>{
 
     @Query("SELECT user_id FROM ACCOUNT_USER WHERE ACCOUNT_USER.account_id = ?1 ")
     List<Long> getUserIdById(float id);

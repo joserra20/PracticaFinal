@@ -17,9 +17,9 @@ create table ACCOUNT (
 );
 
 create table ACCOUNT_USER (
+                         id integer identity primary key,
                          account_id integer,
-                         user_id integer NOT NULL,
-                         PRIMARY KEY (account_id,user_id)
+                         user_id integer NOT NULL
 );
 
 create table TRANSACTION (
