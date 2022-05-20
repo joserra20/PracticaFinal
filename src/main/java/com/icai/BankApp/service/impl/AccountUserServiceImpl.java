@@ -14,7 +14,7 @@ public class AccountUserServiceImpl implements AccountUserService {
     AccountUserRepository accountUserRepository;
 
     @Override
-    public List<Long> getUserIdById(float id) {
+    public List<AccountUser> getUserIdById(float id) {
         return accountUserRepository.getUserIdById(id);
     }
 
@@ -25,6 +25,6 @@ public class AccountUserServiceImpl implements AccountUserService {
 
     @Override
     public AccountUser save(AccountUser ele) {
-        return accountUserRepository.save(ele.getUser_id(),ele.getAccount_id());
+        return accountUserRepository.save(ele.getU_id(),ele.getA_id());
     }
 }

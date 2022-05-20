@@ -15,14 +15,14 @@ public class AccountUser {
 
     private @Column("id") @Id Long id;
 
-    private @Column("account_id") Long account_id;
+    private @Column("A_ID") Long a_id;
 
-    private @Column("user_id") Long user_id;
+    private @Column("U_ID") Long u_id;
 
 
     private AccountUser(Long account_id, Long user_id){
-        this.account_id = account_id;
-        this.user_id = user_id;
+        this.a_id = account_id;
+        this.u_id = user_id;
     }
 
 }

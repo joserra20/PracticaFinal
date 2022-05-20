@@ -29,10 +29,10 @@ public class AccountUserController {
 
     @GetMapping("/UsersByAccount/{id}")
     public ResponseEntity<List<User>> getAllUsers(@PathVariable("id") Long id){
-        List<Long> users = accountUserService.getUserIdById(id);
+        List<AccountUser> users = accountUserService.getUserIdById(id);
         List<User> result = null;
-        for (Long u: users){
-            result.add(userService.getUserById(u).get());
+        for (AccountUser u: users){
+            result.add(userService.getUserById(u.getU_id()).get());
         }
         return ResponseEntity.ok().body(result);
     }
@@ -51,6 +51,6 @@ public class AccountUserController {
     public ResponseEntity<AccountUser> saveUser( @RequestBody AccountUser ele) {
         AccountUser ele1 = accountUserService.save(ele);
         return ResponseEntity
-                .created(URI.create(String.format("/user/%s",ele.getUser_id()))).body(ele1);
+                .created(URI.create(String.format("/user/%s",ele.getU_id()))).body(ele1);
     }
 }

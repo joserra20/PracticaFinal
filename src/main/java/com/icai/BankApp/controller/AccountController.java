@@ -22,7 +22,7 @@ public class AccountController {
     @Autowired
     AccountService accountService;
 
-    @GetMapping("/allUsers")
+    @GetMapping("/allAccounts")
     public ResponseEntity<List<Account>> getAllAccounts(){
         return (ResponseEntity<List<Account>>) accountService.getAllAccounts();
 
