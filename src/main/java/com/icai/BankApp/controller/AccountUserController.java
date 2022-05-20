@@ -31,7 +31,7 @@ public class AccountUserController {
     @GetMapping("/UsersByAccount/{id}")
     public ResponseEntity<List<User>> getAllUsers(@PathVariable("id") Long id){
         List<Long> users = accountUserService.getUserIdById(id);
-        List<User> result = null;
+        List<User> result = new ArrayList();
         for (Long u: users){
             result.add(userService.getUserById(u).get());
         }
