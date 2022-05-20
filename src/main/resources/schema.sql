@@ -18,20 +18,30 @@ create table "ACCOUNT" (
     "USER_TYPE" VARCHAR(45)
 );
 
+DROP TABLE IF EXISTS "ACCOUNT_USER";
+
 create table "ACCOUNT_USER" (
                          "id" integer identity primary key,
                          "A_ID" number NOT NULL,
                          "U_ID" number NOT NULL
 );
 
-create table TRANSACTION (
-                              id integer identity primary key,
-                              origin_acc integer NOT NULL,
-                              destination_acc integer NOT NULL,
-                              amount integer NOT NULL
+DROP TABLE IF EXISTS "TRANSACTION";
+
+create table "TRANSACTION" (
+                              "id" integer identity primary key,
+                              "origin_acc" integer NOT NULL,
+                              "destination_acc" integer NOT NULL,
+                              "amount" integer NOT NULL,
+                              "DATE" DATE NOT NULL
 );
 
-create table FEES (
-                             USER_TYPE VARCHAR(45) primary key,
-                             fee_amount float NOT NULL
+DROP TABLE IF EXISTS "FEES";
+
+create table "FEES" (
+                             "id" integer identity primary key,
+                             "USER_TYPE" VARCHAR(45) NOT NULL,
+                             "fee_amount" integer NOT NULL,
+                             "COMMENT" VARCHAR(100) NOT NULL
+
 );
