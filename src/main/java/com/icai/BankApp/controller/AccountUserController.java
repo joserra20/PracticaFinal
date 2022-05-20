@@ -29,10 +29,10 @@ public class AccountUserController {
 
     @GetMapping("/UsersByAccount/{id}")
     public ResponseEntity<List<User>> getAllUsers(@PathVariable("id") Long id){
-        List<AccountUser> users = accountUserService.getUserIdById(id);
+        List<Long> users = accountUserService.getUserIdById(id);
         List<User> result = null;
-        for (AccountUser u: users){
-            result.add(userService.getUserById(u.getU_id()).get());
+        for (Long u: users){
+            result.add(userService.getUserById(u).get());
         }
         return ResponseEntity.ok().body(result);
     }

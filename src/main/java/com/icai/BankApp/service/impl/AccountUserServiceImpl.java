@@ -14,7 +14,7 @@ public class AccountUserServiceImpl implements AccountUserService {
     AccountUserRepository accountUserRepository;
 
     @Override
-    public List<AccountUser> getUserIdById(float id) {
+    public List<Long> getUserIdById(float id) {
         return accountUserRepository.getUserIdById(id);
     }
 

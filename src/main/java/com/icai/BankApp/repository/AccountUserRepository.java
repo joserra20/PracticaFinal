@@ -11,8 +11,8 @@ import java.util.List;
 @Repository
 public interface AccountUserRepository extends CrudRepository<AccountUser, Long>{
 
-    @Query("SELECT * FROM ACCOUNT_USER WHERE ACCOUNT_USER.A_ID = 1 ")
-    List<AccountUser> getUserIdById(float id);
+    @Query("SELECT U_ID FROM ACCOUNT_USER WHERE ACCOUNT_USER.A_ID = 1 ")
+    List<Long > getUserIdById(float id);
 
     @Query("SELECT * FROM ACCOUNT_USER WHERE ACCOUNT_USER.U_ID = 1 ")
     List<Long> getAccountIdById(float id);
