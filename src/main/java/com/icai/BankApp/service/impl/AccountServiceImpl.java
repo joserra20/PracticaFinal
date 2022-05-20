@@ -22,6 +22,7 @@ public class AccountServiceImpl implements AccountService {
     public List<Account> getAllAccounts() {
         return StreamSupport.stream(accountRepository.findAll().spliterator(), false)
                 .map(obj -> new Account(
+                        obj.getId(),
                         obj.getIBAN(),
                         obj.getBalance(),
                         obj.getUserType())).toList();

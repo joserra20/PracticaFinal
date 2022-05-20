@@ -19,6 +19,7 @@ public class UserServiceImpl implements UserService {
     public List<User> getAllUsers(){
         return StreamSupport.stream(userRepository.findAll().spliterator(), false)
                 .map(obj -> new User(
+                        obj.getId(),
                         obj.getFirstName(),
                         obj.getLastName(),
                         obj.getPassword(),
