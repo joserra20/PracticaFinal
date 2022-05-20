@@ -14,7 +14,7 @@ public interface AccountUserRepository extends CrudRepository<AccountUser, Long>
     @Query("SELECT U_ID FROM ACCOUNT_USER WHERE ACCOUNT_USER.A_ID = 1 ")
     List<Long > getUserIdById(float id);
 
-    @Query("SELECT * FROM ACCOUNT_USER WHERE ACCOUNT_USER.U_ID = 1 ")
+    @Query("SELECT A_ID FROM ACCOUNT_USER WHERE ACCOUNT_USER.U_ID = 1 ")
     List<Long> getAccountIdById(float id);
 
     @Query("INSERT INTO ACCOUNT_USER (user_id, account_id) values (?1,?2)")

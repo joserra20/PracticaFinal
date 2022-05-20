@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -40,7 +41,7 @@ public class AccountUserController {
     @GetMapping("/AccountsByUser/{id}")
     public ResponseEntity<List<Account>> getAllAccounts(@PathVariable("id") Long id){
         List<Long> users = accountUserService.getAccountIdById(id);
-        List<Account> result = null;
+        List<Account> result = new ArrayList();
         for (Long u: users){
             result.add(accountService.getAccountById(u).get());
         }
