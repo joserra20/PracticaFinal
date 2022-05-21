@@ -13,11 +13,11 @@ import org.springframework.data.relational.core.mapping.Table;
 @Table("FEES")
 public class Fee {
 
-    private @Column("id") @Id Long id;
+    private @Column("ID") @Id Long id;
 
     private @Column("USER_TYPE") String userType;
 
-    private @Column("fee_amount") float fee_amount;
+    private @Column("FEE_AMOUNT") float fee_amount;
 
     private @Column("COMMENT") String comment;
 }

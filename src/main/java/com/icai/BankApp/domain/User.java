@@ -12,14 +12,14 @@ import org.springframework.data.relational.core.mapping.Table;
 @NoArgsConstructor
 @Table("USER")
 public class User {
-    private @Column("id") @Id Long id;
+    private @Column("ID") @Id Long id;
 
-    private @Column("dni") String dni;
-    private @Column("firstName") String firstName;
+    private @Column("DNI") String dni;
+    private @Column("FIRSTNAME") String firstName;
 
-    private @Column("lastName") String lastName;
+    private @Column("LASTNAME") String lastName;
 
-    private @Column("password") String password;
+    private @Column("PASSWORD") String password;
 
     private @Column("EMAIL") String email;
 

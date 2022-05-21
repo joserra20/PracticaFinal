@@ -5,6 +5,7 @@ import com.icai.BankApp.domain.User;
 import com.icai.BankApp.repository.AccountRepository;
 import com.icai.BankApp.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.swing.colorchooser.AbstractColorChooserPanel;
@@ -18,6 +19,9 @@ public class AccountServiceImpl implements AccountService {
     @Autowired
     AccountRepository accountRepository;
 
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
     @Override
     public List<Account> getAllAccounts() {
         return StreamSupport.stream(accountRepository.findAll().spliterator(), false)
@@ -26,6 +30,11 @@ public class AccountServiceImpl implements AccountService {
                         obj.getIBAN(),
                         obj.getBalance(),
                         obj.getUserType())).toList();
+    }
+
+    @Override
+    public Iterable<Account> getUserAccounts() {
+        return null;
     }
 
     @Override

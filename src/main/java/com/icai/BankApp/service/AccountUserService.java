@@ -7,8 +7,7 @@ import java.util.List;
 
 @Service
 public interface AccountUserService {
-    List<Long> getUserIdById(float id);
-    List<Long> getAccountIdById(float id);
-
+    List<Long> getUserIdById(Long id);
+    List<Long> getAccountIdById(Long id);
     AccountUser save(AccountUser ele);
 }

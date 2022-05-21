@@ -14,13 +14,13 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Table("TRANSACTION")
 public class Transaction {
-    private @Column("id") @Id Long id;
+    private @Column("ID") @Id Long id;
 
-    private @Column("origin_acc") Long originAcc;
+    private @Column("ORIGIN_ACC") Long originAcc;
 
-    private @Column("destination_acc") Long destinationAcc;
+    private @Column("DESTINATION_ACC") Long destinationAcc;
 
-    private @Column("amount") float amount;
+    private @Column("AMOUNT") float amount;
 
     private @Column("DATE")  LocalDate date;
 

@@ -13,7 +13,7 @@ import org.springframework.data.relational.core.mapping.Table;
 @Table("ACCOUNT_USER")
 public class AccountUser {
 
-    private @Column("id") @Id Long id;
+    private @Column("ID") @Id Long id;
 
     private @Column("A_ID") Long a_id;
 

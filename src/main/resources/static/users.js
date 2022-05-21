@@ -78,9 +78,10 @@ async function mostrarInfoUsuario(usuario) {
 
 	$("#tituloCuentas").text(usuario.firstName + " "+ usuario.lastName);
 
-	console.log("api/accounts_and_users/UsersByAccount/"+usuario.id)
+	let url = "api/accounts/ByUser/"+usuario.id;
+	console.log(url);
 	try {
-		let res = await fetch("api/accounts_and_users/AccountsByUser/"+usuario.id,{
+		let res = await fetch(url,{
 			method : 'GET',
 			headers : {
 				'Content-Type': 'application/json',

@@ -14,11 +14,11 @@ import org.springframework.data.relational.core.mapping.Table;
 @Builder
 @Table("ACCOUNT")
 public class Account {
-    private @Column("id") @Id Long id;
+    private @Column("ID") @Id Long id;
 
     private @Column("IBAN") String IBAN;
 
-    private @Column("balance") float balance;
+    private @Column("BALANCE") float balance;
 
     private @Column("USER_TYPE") String userType;
 

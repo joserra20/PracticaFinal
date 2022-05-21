@@ -11,9 +11,11 @@ import java.util.Optional;
 public interface AccountService {
 
     List<Account> getAllAccounts();
+    Iterable<Account> getUserAccounts();
     Optional<Account> getAccountById(Long id);
     void deleteAccount(Account account);
     Account save(Account account);
-
     Account getAccountByIban(String iban);
+
+
 }

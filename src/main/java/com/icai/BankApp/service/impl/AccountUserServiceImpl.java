@@ -14,12 +14,12 @@ public class AccountUserServiceImpl implements AccountUserService {
     AccountUserRepository accountUserRepository;
 
     @Override
-    public List<Long> getUserIdById(float id) {
+    public List<Long> getUserIdById(Long id) {
         return accountUserRepository.getUserIdById(id);
     }
 
     @Override
-    public List<Long> getAccountIdById(float id) {
+    public List<Long> getAccountIdById(Long id) {
         return accountUserRepository.getAccountIdById(id);
     }
 

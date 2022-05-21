@@ -3,6 +3,7 @@ package com.icai.BankApp.controller;
 
 import ch.qos.logback.classic.Logger;
 import com.icai.BankApp.domain.Account;
+import com.icai.BankApp.repository.AccountRepository;
 import com.icai.BankApp.service.AccountService;
 import com.icai.BankApp.service.UserService;
 import org.slf4j.LoggerFactory;
@@ -22,9 +23,18 @@ public class AccountController {
     @Autowired
     AccountService accountService;
 
+    @Autowired
+    AccountRepository accountRepository;
+
     @GetMapping("/allAccounts")
     public ResponseEntity<List<Account>> getAllAccounts(){
         return ResponseEntity.ok().body(accountService.getAllAccounts()) ;
+
+    }
+
+    @GetMapping("/ByUser/{id}")
+    public ResponseEntity<List<Account>> getAccByUser(@PathVariable("id") Long id){
+        return ResponseEntity.ok().body(accountRepository.myQuery(id)) ;
 
     }
 

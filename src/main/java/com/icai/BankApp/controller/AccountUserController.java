@@ -27,17 +27,6 @@ public class AccountUserController {
     AccountUserService accountUserService;
 
 
-
-    @GetMapping("/UsersByAccount/{id}")
-    public ResponseEntity<List<User>> getAllUsers(@PathVariable("id") Long id){
-        List<Long> users = accountUserService.getUserIdById(id);
-        List<User> result = new ArrayList();
-        for (Long u: users){
-            result.add(userService.getUserById(u).get());
-        }
-        return ResponseEntity.ok().body(result);
-    }
-
     @GetMapping("/AccountsByUser/{id}")
     public ResponseEntity<List<Account>> getAllAccounts(@PathVariable("id") Long id){
         List<Long> users = accountUserService.getAccountIdById(id);
