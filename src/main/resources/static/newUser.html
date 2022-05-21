@@ -126,22 +126,37 @@
                         <!-- CONTENIDO PRINICIPAL -->
 
 
-                          <h3>Usuarios</h3>
-                          <a href="newUser.html">Crear nuevo usuario</a>
-                          <a href="userAccounts.html">Obtener cuentas asociadas a un usuario (DNI)</a>
-                          <p>Para consultar las cuentas asociadas a un usuario, haga clic en alguna de las filas.</p>
-                          <!-- Tabla principal -->
-                          <div id="containerTabla">
-                            <h3 id="titulo-tabla"></h3>
-                            <table id="example" class="table table-hover table-responsive  mt-1" width="100%"></table>
+                          <h3>Crear nuevo usuario</h3>
+                          <form class="forms-sample">
+                          
+                            <div class="row">
+                              <div class="form-group col-6">
+                                <label for="nombreInput">Nombre</label>
+                                <input class="form-control p-input" id="nombreInput"></input>
+                            </div>
+                            <div class="form-group col-6">
+                              <label for="apellidosInput">Apellidos</label>
+                              <input class="form-control p-input" id="apellidosInput"></input>
                           </div>
-                          <div id="cuentas">
-                            <h3 id="tituloCuentas">Nombre</h3>
-                            Cuentas asociadas:
-                            <table id="tablaCuentas" class="table table-hover">
+                        </div>
+                        <div class="row">
+                          <div class="form-group col-6">
+                            <label for="emailInput">Email</label>
+                            <input type="email" class="form-control p-input" id="emailInput" aria-describedby="emailHelp" placeholder="Introduzca un email">
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="passwordInput">Contraseña</label>
+                            <input type="password" class="form-control p-input" id="passwordInput" placeholder="Password">
+                        </div>
+                        </div>
+                      
+                            <div class="col-12">
+                                <button type="submit" onclick="nuevoUsuario();" class="btn btn-primary">Crear</button>
+                            </div>
+                        </form>
 
-                            </table>
-                          </div>
+
+
                       </div>
                     </div>
                   </div>
@@ -168,8 +183,8 @@
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.4/b-2.2.2/b-colvis-2.2.2/sc-2.0.5/datatables.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>  
 <!-- Script Propio -->
-<script src="users.js"></script>
-<script>cargarUsuarios();</script>
+<script src="newUser.js"></script>
+<script src="js/template.js"></script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
   <script src="vendors/chart.js/Chart.min.js"></script>

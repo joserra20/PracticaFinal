@@ -8,7 +8,7 @@ const cargarUsuarios = async() => {
 			}
 		});
 
-		$("#titulo-tabla").html("<h3>Usuarios</h3>");
+		// $("#titulo-tabla").html("<h3>Usuarios</h3>");
 
 		// Si la respuesta es correcta
 		if(res.status === 200){
@@ -48,6 +48,10 @@ const cargarUsuarios = async() => {
 						}
 				  }
 				} );
+
+				$('#example tbody').on( 'click', 'tr', function () {
+					mostrarInfoUsuario(table.row( this ).data());
+				} );
 		  } );
 
 		} else if(respuesta.status === 404){
@@ -61,6 +65,41 @@ const cargarUsuarios = async() => {
 	}
 
 }
+
+const mostrarInfoUsuario = (usuario) => {
+
+	let str = `
+	<div class="row">
+	<div class="col-md-4">
+	  <img class="logo mx-auto d-block" width="100" src="https://logo.clearbit.com/${gasolinera.Rótulo}.com" onerror="this.onerror=null; this.src='https://cdn-icons-png.flaticon.com/512/234/234789.png'">
+	</div>
+	<div class="col-md-6">
+	  <h3 class="titulo">${usuario.firstName} ${usuario.lastName}</h3>
+	  <p>${gasolinera.Dirección}</p>
+	  <p class="font-weight-bold">${gasolinera.Municipio}</p>
+	  <p class="font-weight-bold">${gasolinera.Provincia}</p>
+	  <p>Horario: ${gasolinera.Horario}</p>
+	</div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+	  <h6>Gasolina</h6>
+	  <p><strong>SP95 E5</strong> ${gasolinera["Precio Gasolina 95 E5"]}</p>
+	  <p><strong>SP98 E5</strong> ${gasolinera["Precio Gasolina 98 E5"]}</p>
+	</div>
+	<div class="col-md-6">
+	  <h6>Diesel</h6>
+	  <p><strong>Gasoleo A</strong> ${gasolinera["Precio Gasoleo A"]}</p>
+	  <p><strong>Gasoleo Premium</strong> ${gasolinera["Precio Gasoleo Premium"]}</p>
+	  <p><strong>Gasoleo B</strong> ${gasolinera["Precio Gasoleo B"]}</p>
+	</div>
+  
+</div>
+	`
+	$("#mensaje").html(str);
+	$('#exampleModal').modal('show');
+}
+
 
 const cargarCuentas = async() => {
 	try {
