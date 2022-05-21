@@ -11,7 +11,9 @@ import java.util.Optional;
 public interface AccountService {
 
     List<Account> getAllAccounts();
-    Iterable<Account> getUserAccounts();
+
+    List<Account> getAccByUserId(Long userId);
+
     Optional<Account> getAccountById(Long id);
     void deleteAccount(Account account);
     Account save(Account account);

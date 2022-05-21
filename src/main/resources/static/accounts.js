@@ -75,8 +75,9 @@ async function mostrarInfoCuenta(cuenta) {
 
 	$("#tituloCuentas").text("Cuenta " + cuenta.iban);
 
+	let url = "api/users/ByAccount/"+cuenta.id;
 	try {
-		let res = await fetch("api/accounts_and_users/UsersByAccount/"+cuenta.id,{
+		let res = await fetch(url,{
 			method : 'GET',
 			headers : {
 				'Content-Type': 'application/json',

@@ -23,9 +23,6 @@ public class AccountController {
     @Autowired
     AccountService accountService;
 
-    @Autowired
-    AccountRepository accountRepository;
-
     @GetMapping("/allAccounts")
     public ResponseEntity<List<Account>> getAllAccounts(){
         return ResponseEntity.ok().body(accountService.getAllAccounts()) ;
@@ -33,8 +30,8 @@ public class AccountController {
     }
 
     @GetMapping("/ByUser/{id}")
-    public ResponseEntity<List<Account>> getAccByUser(@PathVariable("id") Long id){
-        return ResponseEntity.ok().body(accountRepository.myQuery(id)) ;
+    public ResponseEntity<List<Account>> getAccByUser(@PathVariable("id") Long userId){
+        return ResponseEntity.ok().body(accountService.getAccByUserId(userId)) ;
 
     }
 

@@ -10,6 +10,8 @@ import java.util.Optional;
 public interface UserService {
 
     List<User> getAllUsers();
+
+    List<User> getUsersByAccount(Long accId);
     Optional<User> getUserById(Long id);
     void deleteUser(User u);
     User save(User u);

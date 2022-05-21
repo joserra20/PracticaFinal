@@ -1,14 +1,12 @@
 package com.icai.BankApp.service.impl;
 
 import com.icai.BankApp.domain.Account;
-import com.icai.BankApp.domain.User;
 import com.icai.BankApp.repository.AccountRepository;
 import com.icai.BankApp.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
-import javax.swing.colorchooser.AbstractColorChooserPanel;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.StreamSupport;
@@ -33,8 +31,8 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Iterable<Account> getUserAccounts() {
-        return null;
+    public List<Account> getAccByUserId(Long userId) {
+        return accountRepository.accByUser(userId);
     }
 
     @Override

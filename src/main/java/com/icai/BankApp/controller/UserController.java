@@ -1,6 +1,7 @@
 package com.icai.BankApp.controller;
 
 import ch.qos.logback.classic.Logger;
+import com.icai.BankApp.domain.Account;
 import com.icai.BankApp.domain.User;
 import com.icai.BankApp.service.UserService;
 import org.slf4j.LoggerFactory;
@@ -51,6 +52,12 @@ public class UserController {
         User user1 = userService.save(user);
         return ResponseEntity
                 .created(URI.create(String.format("/user/%s",user.getFirstName()))).body(user1);
+    }
+
+    @GetMapping("/ByAccount/{id}")
+    public ResponseEntity<List<User>> getAccByUser(@PathVariable("id") Long id){
+        return ResponseEntity.ok().body(userService.getUsersByAccount(id)) ;
+
     }
     @GetMapping("/getByName/{name}/{surname}")
     public ResponseEntity<User> getUserByName(@RequestBody String  name, @RequestBody String surname){

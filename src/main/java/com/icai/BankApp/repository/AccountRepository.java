@@ -25,5 +25,5 @@ public interface AccountRepository extends CrudRepository<Account,Long> {
                     ON ACCOUNT_USER.u_id = U.ID
                     WHERE U.ID=:id
                     """)
-    List<Account> myQuery(@Param("id") Long id);
+    List<Account> accByUser(@Param("id") Long id);
 }
