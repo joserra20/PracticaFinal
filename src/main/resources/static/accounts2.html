@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>BankApp - Usuarios</title>
+  <title>BankApp - Cuentas</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="vendors/feather/feather.css">
   <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
@@ -80,7 +80,7 @@
               <span class="menu-title">Inicio</span>
             </a>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="users.html">
               <i class="mdi mdi-account-multiple menu-icon"></i>
               <span class="menu-title">Usuarios</span>
@@ -122,27 +122,11 @@
                   <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview">
                     <div class="card card-rounded">
                       <div class="card-body">
-
-                        <!-- CONTENIDO PRINICIPAL -->
-
-
-                          <h3>Usuarios</h3>
-                          <a href="newUser.html">Crear nuevo usuario</a>
-                          <br><a href="userAccounts.html">Obtener cuentas asociadas a un usuario (DNI)</a>
-                          <p>Para consultar las cuentas asociadas a un usuario, haga clic en alguna de las filas.</p>
                           <!-- Tabla principal -->
-                          <div id="containerTabla">
-                            <h3 id="titulo-tabla"></h3>
-                            <table id="example" class="table table-hover table-responsive  mt-1" width="100%"></table>
-                          </div>
-                          <div id="cuentas">
-                            <h3 id="tituloCuentas">Nombre</h3>
-                            Cuentas asociadas:
-                            <table id="tablaCuentas" class="table table-hover">
-
-                            </table>
-                            <button class="btn" id="btnBorrar">Eliminar usuario</button>
-                          </div>
+                            <div id="containerTabla">
+                              <h3 id="titulo-tabla"></h3>
+                              <table id="example" class="table-responsive  mt-1" width="100%"></table>
+                            </div>
                       </div>
                     </div>
                   </div>
@@ -156,7 +140,6 @@
           </div>
         </footer>
         <!-- partial -->
-
       </div>
       <!-- main-panel ends -->
     </div>
@@ -169,11 +152,24 @@
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.4/b-2.2.2/b-colvis-2.2.2/sc-2.0.5/datatables.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>  
 <!-- Script Propio -->
-<script src="users.js"></script>
-<script>cargarUsuarios();</script>
+<script src="apps.js"></script>
+<script>cargarCuentas();</script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
   <script src="vendors/chart.js/Chart.min.js"></script>
+
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="js/off-canvas.js"></script>
+  <script src="js/hoverable-collapse.js"></script>
+  <script src="js/template.js"></script>
+  <script src="js/settings.js"></script>
+  <script src="js/todolist.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="js/dashboard.js"></script>
+  <script src="js/Chart.roundedBarCharts.js"></script>
+  <!-- End custom js for this page-->
 </body>
 
 </html>

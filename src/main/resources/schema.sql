@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS "USERS";
 
 create table "USER" (
     "id" integer identity NOT NULL primary key,
+    "dni" VARCHAR(10) NOT NULL,
     "firstName" VARCHAR(45) NOT NULL,
     "lastName" VARCHAR(45) NOT NULL,
     "password" VARCHAR(255) NOT NULL,

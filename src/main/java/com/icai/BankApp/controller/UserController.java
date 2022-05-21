@@ -35,7 +35,7 @@ public class UserController {
         return ResponseEntity.ok().body(userService.getUserById(id).get());
     }
 
-    @GetMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Boolean> deleteUser(@PathVariable("id") Long id) {
        Optional<User> user = userService.getUserById(id);
        if (user.isPresent()){

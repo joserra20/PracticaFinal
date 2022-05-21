@@ -1,7 +1,7 @@
 -- Insertando algunos registros para que la base de datos no este vacia
 
-INSERT INTO USER  VALUES (1,'Jose Ramon','Porro Nieves','hola','joserra@comillas.edu','STANDARD');
-INSERT INTO USER  VALUES (2,'Carlota','Ciruelos','hola','carlota@comillas.edu','STANDARD');
+INSERT INTO USER  VALUES (1,'00111222A','Jose Ramon','Porro Nieves','hola','joserra@comillas.edu','STANDARD');
+INSERT INTO USER  VALUES (2,'00222111B','Carlota','Ciruelos','hola','carlota@comillas.edu','STANDARD');
 
 INSERT INTO ACCOUNT VALUES (1,'ES21000000000000000',100.5,'STANDARD');
 INSERT INTO ACCOUNT VALUES (2,'ES21000000000000001',10,'STANDARD');

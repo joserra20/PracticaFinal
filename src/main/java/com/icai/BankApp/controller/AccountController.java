@@ -33,7 +33,7 @@ public class AccountController {
         return ResponseEntity.ok().body(accountService.getAccountById(id).get());
     }
 
-    @GetMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Boolean> deleteAccountById(@PathVariable("id") Long id) {
         Optional<Account> account = accountService.getAccountById(id);
         if (account.isPresent()){

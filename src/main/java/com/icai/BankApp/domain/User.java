@@ -14,6 +14,7 @@ import org.springframework.data.relational.core.mapping.Table;
 public class User {
     private @Column("id") @Id Long id;
 
+    private @Column("dni") String dni;
     private @Column("firstName") String firstName;
 
     private @Column("lastName") String lastName;

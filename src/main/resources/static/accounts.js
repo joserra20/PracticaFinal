@@ -1,6 +1,6 @@
-const cargarUsuarios = async() => {
+const cargarCuentas = async() => {
 	try {
-		let res = await fetch("/api/users/allUsers/",{
+		let res = await fetch("/api/accounts/allAccounts/",{
 			method : 'GET',
 			headers : {
 				'Content-Type': 'application/json',
@@ -8,7 +8,6 @@ const cargarUsuarios = async() => {
 			}
 		});
 
-		// $("#titulo-tabla").html("<h3>Usuarios</h3>");
 
 		// Si la respuesta es correcta
 		if(res.status === 200){
@@ -18,25 +17,23 @@ const cargarUsuarios = async() => {
 				$('#example').DataTable( {
 					 data: datos,
 					 columns: [
-						{ title: 'DNI', data: 'dni' },
-						{ title: 'Nombre', data: 'firstName' },
-						{ title: 'Apellidos', data: 'lastName' },
-						{ title: 'Email', data: 'email' },
-						{ title: 'Tarifa', data: 'userType' }
+						{ title: 'IBAN', data: 'iban' },
+						{ title: 'Saldo', data: 'balance' },
+						{ title: 'Tipo', data: 'userType' }
 					 ] ,
 					 "language": {
 						"decimal":        "",
 						"emptyTable":     "No hay datos disponibles",
-						"info":           "Mostrando _START_ a _END_ de _TOTAL_ usuarios",
-						"infoEmpty":      "Mostrando 0 a 0 de 0 usuarios",
-						"infoFiltered":   "(filtrado a partir de _MAX_ usuarios)",
+						"info":           "Mostrando _START_ a _END_ de _TOTAL_ cuentas",
+						"infoEmpty":      "Mostrando 0 a 0 de 0 cuentas",
+						"infoFiltered":   "(filtrado a partir de _MAX_ cuentas)",
 						"infoPostFix":    "",
 						"thousands":      ",",
-						"lengthMenu":     "Mostrar _MENU_ usuarios por página",
+						"lengthMenu":     "Mostrar _MENU_ cuentas por página",
 						"loadingRecords": "Cargando...",
 						"processing":     "Procesando...",
 						"search":         "Buscar:",
-						"zeroRecords":    "No se han encontrado usuarios que coincidan con la busqueda",
+						"zeroRecords":    "No se han encontrado cuentas que coincidan con la busqueda",
 						"paginate": {
 							 "first":      "Primero",
 							 "last":       "Último",
@@ -54,12 +51,12 @@ const cargarUsuarios = async() => {
 
 				$('#example tbody').on( 'click', 'tr', function () {
 					console.log(table.row( this ).data());
-					mostrarInfoUsuario(table.row( this ).data());
+					mostrarInfoCuenta(table.row( this ).data());
 				} );
 		  } );
 
 		} else if(respuesta.status === 404){
-			console.log('El usuario que buscas no existe');
+			console.log('La cuenta que buscas no existe');
 		} else {
 			console.log('Hubo un error');
 		}
@@ -70,17 +67,16 @@ const cargarUsuarios = async() => {
 
 }
 
-async function mostrarInfoUsuario(usuario) {
+async function mostrarInfoCuenta(cuenta) {
 
 	if ($.fn.dataTable.isDataTable('#tablaCuentas')) {
 			$('#tablaCuentas').DataTable().destroy();
 		}
 
-	$("#tituloCuentas").text(usuario.firstName + " "+ usuario.lastName);
+	$("#tituloCuentas").text("Cuenta " + cuenta.iban);
 
-	console.log("api/accounts_and_users/UsersByAccount/"+usuario.id)
 	try {
-		let res = await fetch("api/accounts_and_users/AccountsByUser/"+usuario.id,{
+		let res = await fetch("api/accounts_and_users/UsersByAccount/"+cuenta.id,{
 			method : 'GET',
 			headers : {
 				'Content-Type': 'application/json',
@@ -96,9 +92,11 @@ async function mostrarInfoUsuario(usuario) {
 				$('#tablaCuentas').DataTable( {
 					 data: datos,
 					 columns: [
-						{ title: 'IBAN', data: 'iban' },
-						{ title: 'Saldo', data: 'balance' },
-						{ title: 'Tipo', data: 'userType' }
+						{ title: 'DNI', data: 'dni' },
+						{ title: 'Nombre', data: 'firstName' },
+						{ title: 'Apellidos', data: 'lastName' },
+						{ title: 'Email', data: 'email' },
+						{ title: 'Tarifa', data: 'userType' }
 					 ] ,
 					 paging: false,
 					 searching: false,
@@ -117,11 +115,11 @@ async function mostrarInfoUsuario(usuario) {
 	}
 
 	$( "#btnBorrar" ).remove();
-	var r = $('<button id="btnBorrar">Eliminar usuario</button>');
+	var r = $('<button id="btnBorrar">Eliminar cuenta</button>');
 	$("#cuentas").append(r);
 
 	btnBorrar.addEventListener("click", function() {
-		borrarUsuario(usuario);
+		borrarCuenta(cuenta);
 	  });
 
 	$('#cuentas').show();
@@ -129,18 +127,18 @@ async function mostrarInfoUsuario(usuario) {
 
 }
 
-async function borrarUsuario(usuario){
+async function borrarCuenta(cuenta){
 	try{
 	
-	let res = await fetch("/api/users/delete/" + usuario.id,{
+	let res = await fetch("/api/accounts/delete/" + cuenta.id,{
 		method : 'DELETE'
 	});
 
 	if(res.status === 200){
-		alert("Usuario borrado correctamente");
+		alert("Cuenta borrada correctamente");
 		location.reload();
 	} else if(respuesta.status === 404){
-		console.log('El usuario que buscas no existe');
+		console.log('La cuenta que buscas no existe');
 	} else {
 		console.log('Hubo un error');
 	}
