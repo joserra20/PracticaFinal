@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>BankApp - Crear cuenta bancaria</title>
+  <title>BankApp - Usuarios</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="vendors/feather/feather.css">
   <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
@@ -86,7 +86,7 @@
               <span class="menu-title">Usuarios</span>
             </a>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="accounts.html">
               <i class="mdi mdi-view-headline menu-icon"></i>
               <span class="menu-title">Cuentas</span>
@@ -98,7 +98,7 @@
               <span class="menu-title">Transacciones</span>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="fees.html">
               <i class="mdi mdi-coin menu-icon"></i>
               <span class="menu-title">Fees</span>
@@ -126,37 +126,21 @@
                         <!-- CONTENIDO PRINICIPAL -->
 
 
-                          <h3>Crear nueva cuenta</h3>
-                          <form class="forms-sample">
-                          
-                            <div class="row">
-                              <div class="form-group col-6">
-                                <label for="nombreInput">IBAN</label>
-                                <input class="form-control p-input" id="ibanInput"></input>
-                            </div>
-                            <div class="form-group col-6">
-                              <label for="apellidosInput">Saldo inicial</label>
-                              <input class="form-control p-input" id="balanceInput"></input>
+                          <h3>Fees</h3>
+                          <p>En esta página se muestran los diferentes tipos de comisión.</p>
+                          <!-- Tabla principal -->
+                          <div id="containerTabla">
+                            <h3 id="titulo-tabla"></h3>
+                            <table id="example" class="table table-hover table-responsive  mt-1" width="100%"></table>
                           </div>
-                        </div>
-                        <div class="row">
-                          <div class="form-group col-6">
-                            <label for="emailInput">Email</label>
-                            <input type="email" class="form-control p-input" id="emailInput" aria-describedby="emailHelp" placeholder="Introduzca un email">
-                        </div>
-                        <div class="form-group col-6">
-                            <label for="passwordInput">Contraseña</label>
-                            <input type="password" class="form-control p-input" id="passwordInput" placeholder="Password">
-                        </div>
-                        </div>
-                      
-                            <div class="col-12">
-                                <button type="submit" onclick="nuevoUsuario();" class="btn btn-primary">Crear</button>
-                            </div>
-                        </form>
+                          <div id="cuentas">
+                            <h3 id="tituloCuentas">Nombre</h3>
+                            Cuentas asociadas:
+                            <table id="tablaCuentas" class="table table-hover">
 
-
-
+                            </table>
+                            <button class="btn" id="btnBorrar">Eliminar usuario</button>
+                          </div>
                       </div>
                     </div>
                   </div>
@@ -183,8 +167,8 @@
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.4/b-2.2.2/b-colvis-2.2.2/sc-2.0.5/datatables.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>  
 <!-- Script Propio -->
-<script src="newUser.js"></script>
-<script src="js/template.js"></script>
+<script src="fees.js"></script>
+<script>cargarUsuarios();</script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
   <script src="vendors/chart.js/Chart.min.js"></script>

@@ -1,5 +1,6 @@
 async function nuevoUsuario(){
     event.preventDefault();
+	let dni = document.getElementById('dniInput').value;
 	let nombre = document.getElementById('nombreInput').value;
 	let apellidos = document.getElementById('apellidosInput').value;
 	let email = document.getElementById('emailInput').value;
@@ -16,6 +17,7 @@ async function nuevoUsuario(){
         if (true){
             //No se incluye el ID porque se crea automáticamente siguiendo el orden
             const dataObj = {
+				"dni" : dni,
                 "firstName" : nombre,
                  "lastName" : apellidos,
                  "email" : email,
