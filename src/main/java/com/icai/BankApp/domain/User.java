@@ -15,6 +15,7 @@ public class User {
     private @Column("ID") @Id Long id;
 
     private @Column("DNI") String dni;
+
     private @Column("FIRSTNAME") String firstName;
 
     private @Column("LASTNAME") String lastName;
