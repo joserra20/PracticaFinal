@@ -5,7 +5,7 @@
 
 BankApp es una aplicación web cuyo objetivo es la gestión de una entidad bancaria y similares.
 #### Login (Security and authentication)
-![](Login1.png)
+![](login1.png)
 El proyecto cuenta con la dependencia de Spring Security configurada. Para acceder al sistema es necesario rellenar un formulario de login personalizado. También se encuentran protegidas las llamadas a las APIs. Además también se emplea para gestionar la sesión de usuario.
 ##### Encriptación de contraseñas
 Las contraseñas de los usuarios se encuentran encriptadas en la base de datos, de esta forma hay más protección frente a ataques a la base de datos.
