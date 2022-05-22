@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>BankApp - Usuarios</title>
+  <title>BankApp - Inicio</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="vendors/feather/feather.css">
   <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
@@ -44,8 +44,8 @@
       <div class="navbar-menu-wrapper d-flex align-items-top">
         <ul class="navbar-nav">
           <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-            <h1 class="welcome-text">Interfaz de <span class="text-black fw-bold nombre">administración</span></h1>
-            <h3 class="welcome-sub-text">Desde aquí es posible visualizar y gestionar usuarios, cuentas y transacciones.</h3>
+            <h1 class="welcome-text">Bienvenid@, <span id="nombreBienvenida" class="text-black fw-bold"></span></h1>
+            <h3 class="welcome-sub-text">A continuación se te muestran tus cuentas activas.</h3>
           </li>
         </ul>
         <ul class="navbar-nav ms-auto">
@@ -71,40 +71,10 @@
       <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
-          <li class="nav-item">
-            <a class="nav-link" href="admin.html">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">
               <i class="mdi mdi-grid-large menu-icon"></i>
               <span class="menu-title">Inicio</span>
-            </a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="users.html">
-              <i class="mdi mdi-account-multiple menu-icon"></i>
-              <span class="menu-title">Usuarios</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="accounts.html">
-              <i class="mdi mdi-view-headline menu-icon"></i>
-              <span class="menu-title">Cuentas</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="transactions.html">
-              <i class="mdi mdi-cash-multiple menu-icon"></i>
-              <span class="menu-title">Transacciones</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="fees.html">
-              <i class="mdi mdi-coin menu-icon"></i>
-              <span class="menu-title">Fees</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="pagina.html">
-              <i class="mdi mdi-coin menu-icon"></i>
-              <span class="menu-title">Configuracion</span>
             </a>
           </li>
         </ul>
@@ -123,10 +93,9 @@
                         <!-- CONTENIDO PRINICIPAL -->
 
 
-                          <h3>Usuarios</h3>
-                          <a href="newUser.html">Crear nuevo usuario</a>
-                          <br><a href="userAccounts.html">Obtener cuentas asociadas a un usuario (DNI)</a>
-                          <p>Para consultar las cuentas asociadas a un usuario, haga clic en alguna de las filas.</p>
+                          <h3>Tus cuentas</h3>
+                          <a href="newAccount.html">Solicitar la creación de una nueva cuenta</a>
+                          <p>Para consultar información ampliada sobre alguna cuenta haga click sobre ella.</p>
                           <!-- Tabla principal -->
                           <div id="containerTabla">
                             <h3 id="titulo-tabla"></h3>
@@ -134,11 +103,11 @@
                           </div>
                           <div id="cuentas">
                             <h3 id="tituloCuentas">Nombre</h3>
-                            Cuentas asociadas:
+                            Titulares:
                             <table id="tablaCuentas" class="table table-hover">
 
                             </table>
-                            <button class="btn" id="btnBorrar">Eliminar usuario</button>
+                            <button class="btn" id="btnBorrar">Eliminar cuenta</button>
                           </div>
                       </div>
                     </div>
@@ -166,8 +135,7 @@
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.4/b-2.2.2/b-colvis-2.2.2/sc-2.0.5/datatables.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>  
 <!-- Script Propio -->
-<script src="users.js"></script>
-<script>cargarUsuarios();</script>
+<script src="index.js"></script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
   <script src="vendors/chart.js/Chart.min.js"></script>

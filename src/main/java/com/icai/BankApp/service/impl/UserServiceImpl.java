@@ -4,8 +4,13 @@ import com.icai.BankApp.domain.User;
 import com.icai.BankApp.repository.UserRepository;
 import com.icai.BankApp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.SecurityProperties;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.StreamSupport;
@@ -50,5 +55,20 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserByName(String name, String surname){
         return userRepository.getUserByName(name, surname);
+    }
+
+    @Override
+    public User getUserByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepository.findByEmail(username);
+
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        UserDetails newUser = new org.springframework.security.core.userdetails.User(user.getEmail(),user.getPassword(),authorities);
+
+        return newUser;
     }
 }

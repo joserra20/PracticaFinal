@@ -29,7 +29,7 @@ public class AccountController {
 
     }
 
-    @GetMapping("/ByUser/{id}")
+    @GetMapping("/byUser/{id}")
     public ResponseEntity<List<Account>> getAccByUser(@PathVariable("id") Long userId){
         return ResponseEntity.ok().body(accountService.getAccByUserId(userId)) ;
 

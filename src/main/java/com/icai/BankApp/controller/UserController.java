@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.net.URI;
 import java.util.List;
@@ -24,6 +25,9 @@ public class UserController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @GetMapping("/allUsers")
     public ResponseEntity<List<User>> getAllUsers(){
@@ -49,6 +53,8 @@ public class UserController {
     @PostMapping( "/save")
     public ResponseEntity<User> saveUser( @RequestBody User user) {
         LOGGER.info(user.getFirstName());
+        String hashedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(hashedPassword);
         User user1 = userService.save(user);
         return ResponseEntity
                 .created(URI.create(String.format("/user/%s",user.getFirstName()))).body(user1);
@@ -62,6 +68,11 @@ public class UserController {
     @GetMapping("/getByName/{name}/{surname}")
     public ResponseEntity<User> getUserByName(@RequestBody String  name, @RequestBody String surname){
         return ResponseEntity.ok().body(userService.getUserByName(name,surname));
+    }
+
+    @GetMapping("/getByEmail/{email}")
+    public ResponseEntity<User> getUserByName(@PathVariable("email") String email){
+        return ResponseEntity.ok().body(userService.getUserByEmail(email));
     }
 
 }

@@ -25,4 +25,7 @@ public interface UserRepository extends CrudRepository<User,Long> {
                                WHERE A.ID=:id;
                    """)
     List<User> usersByAcc(@Param("id") Long id);
+
+    public User findByEmail(String email);
+
 }

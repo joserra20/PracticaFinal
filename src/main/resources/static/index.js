@@ -1,6 +1,7 @@
-const cargarCuentas = async() => {
+const cargarCuentas = async(id) => {
 	try {
-		let res = await fetch("/api/accounts/allAccounts/",{
+		let url = "/api/accounts/byUser/"+id;
+		let res = await fetch(url,{
 			method : 'GET',
 			headers : {
 				'Content-Type': 'application/json',
@@ -39,12 +40,11 @@ const cargarCuentas = async() => {
 							 "last":       "Último",
 							 "next":       "Siguiente",
 							 "previous":   "Anterior"
-						},
-						"aria": {
-							 "sortAscending":  ": activate to sort column ascending",
-							 "sortDescending": ": activate to sort column descending"
 						}
-				  }
+				  },
+				  paging: false,
+				  searching: false,
+ ordering:  false
 				} );
 
 				let table = $('#example').DataTable();
@@ -115,14 +115,6 @@ async function mostrarInfoCuenta(cuenta) {
 		console.log(error);
 	}
 
-	$( "#btnBorrar" ).remove();
-	var r = $('<button id="btnBorrar">Eliminar cuenta</button>');
-	$("#cuentas").append(r);
-
-	btnBorrar.addEventListener("click", function() {
-		borrarCuenta(cuenta);
-	  });
-
 	$('#cuentas').show();
 
 
@@ -139,7 +131,7 @@ async function borrarCuenta(cuenta){
 	if(res.status === 200){
 		alert("Cuenta borrada correctamente");
 		location.reload();
-	} else if(respuesta.status === 404){
+	} else if(res.status === 404){
 		console.log('La cuenta que buscas no existe');
 	} else {
 		console.log('Hubo un error');
@@ -150,4 +142,62 @@ async function borrarCuenta(cuenta){
 }
 }
 
+async function getUsername() {
+
+	let url = "/username";
+	console.log(url);
+	try {
+		let res = await fetch(url,{
+			method : 'GET'
+		});
+
+		// Si la respuesta es correcta
+		if(res.status === 200){
+			res.text().then(function (text) {
+				$('#nombreBienvenida').text(text);
+			  });
+
+		} else if(res.status === 404){
+			console.log('El usuario que buscas no existe');
+		} else {
+			console.log('Hubo un error');
+		}
+
+	} catch(error){
+		console.log(error);
+	}
+
+
+}
+
+async function getUserId() {
+
+	let url = "/currentId";
+	console.log(url);
+	try {
+		let res = await fetch(url,{
+			method : 'GET'
+		});
+
+		// Si la respuesta es correcta
+		if(res.status === 200){
+			res.text().then(function (text) {
+				cargarCuentas(text);
+			  });
+
+		} else if(res.status === 404){
+			console.log('El usuario que buscas no existe');
+		} else {
+			console.log('Hubo un error');
+		}
+
+	} catch(error){
+		console.log(error);
+	}
+
+
+}
+
 $('#cuentas').hide();
+getUsername();
+getUserId();
