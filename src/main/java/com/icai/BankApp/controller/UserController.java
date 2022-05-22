@@ -60,7 +60,7 @@ public class UserController {
                 .created(URI.create(String.format("/user/%s",user.getFirstName()))).body(user1);
     }
 
-    @GetMapping("/ByAccount/{id}")
+    @GetMapping("/byAccount/{id}")
     public ResponseEntity<List<User>> getAccByUser(@PathVariable("id") Long id){
         return ResponseEntity.ok().body(userService.getUsersByAccount(id)) ;
 

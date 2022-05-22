@@ -13,14 +13,18 @@ Las contraseñas de los usuarios se encuentran encriptadas en la base de datos, 
 ### Secciones
 #### Usuario normal
 ![](Normal.png)
+
 Una vez introducidos los credenciales, se accede a la página principal donde se da un mensaje de bienvenida personalizado y se muestra un resumen de las cuentas del usuario en cuestión. Se puede cerrar sesión haciendo click en la foto superior derecha.
 ##### Información ampliada sobre una cuenta
 El usuario puede hacer click sobre cualquiera de sus cuentas para ver información más detallada o realizar gestiones.
 #### Usuario administrador
 ![](Admin.png)
+
 En la interfaz de administración se pueden realizar gestiones varias como la creación de usuarios, creación de cuentas, etc. También es posible gestionar todas las cuentas del sistema y también filtrarlas por titulares. En el menú de la izquierda se despliegan las diferentes áreas de gestión.
 ##### Usuarios
 
 ##### Cuentas
+![](Cuentas.png)
 
+Desde la pestaña de cuentas se ofrece una tabla con todas las cuentas que incorpora ordenado por varios campos ascendente y descendente así como una útil barra de búsqueda. Los mensajes de la tabla se encuentran personalizados.
 ##### Transacciones
