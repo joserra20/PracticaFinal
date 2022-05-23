@@ -51,7 +51,7 @@ public class AccountController {
     }
 
     @PostMapping( "/save")
-    public ResponseEntity<Account> saveUser( @RequestBody Account account) {
+    public ResponseEntity<Account> saveAccount( @RequestBody Account account) {
 
         Account a = accountService.save(account);
         return ResponseEntity
