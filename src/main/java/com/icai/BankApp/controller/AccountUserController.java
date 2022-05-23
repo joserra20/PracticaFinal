@@ -26,17 +26,6 @@ public class AccountUserController {
     @Autowired
     AccountUserService accountUserService;
 
-
-    @GetMapping("/AccountsByUser/{id}")
-    public ResponseEntity<List<Account>> getAllAccounts(@PathVariable("id") Long id){
-        List<Long> users = accountUserService.getAccountIdById(id);
-        List<Account> result = new ArrayList();
-        for (Long u: users){
-            result.add(accountService.getAccountById(u).get());
-        }
-        return ResponseEntity.ok().body(result);
-    }
-
     @PostMapping( "/save")
     public ResponseEntity<AccountUser> saveUser( @RequestBody AccountUser ele) {
         AccountUser ele1 = accountUserService.save(ele);

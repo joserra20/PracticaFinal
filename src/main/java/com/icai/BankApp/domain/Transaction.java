@@ -24,4 +24,10 @@ public class Transaction {
 
     private @Column("DATE")  LocalDate date;
 
+    public Transaction(Long originAcc, Long destinationAcc, float amount, LocalDate date) {
+        this.originAcc = originAcc;
+        this.destinationAcc = destinationAcc;
+        this.amount = amount;
+        this.date = date;
+    }
 }

@@ -25,6 +25,6 @@ public class AccountUserServiceImpl implements AccountUserService {
 
     @Override
     public AccountUser save(AccountUser ele) {
-        return accountUserRepository.save(ele.getU_id(),ele.getA_id());
+        return accountUserRepository.save(ele);
     }
 }

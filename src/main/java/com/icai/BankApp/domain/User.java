@@ -26,7 +26,8 @@ public class User {
 
     private @Column("USER_TYPE") String userType;
 
-    public User(String firstName, String lastName, String password, String email, String userType) {
+    public User(String dni,String firstName, String lastName, String password, String email, String userType) {
+        this.dni = dni;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;

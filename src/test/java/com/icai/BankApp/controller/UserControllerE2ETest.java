@@ -1,8 +1,9 @@
 package com.icai.BankApp.controller;
 
 import com.icai.BankApp.domain.Account;
+import com.icai.BankApp.domain.User;
 import com.icai.BankApp.repository.AccountRepository;
-import org.checkerframework.checker.units.qual.A;
+import com.icai.BankApp.repository.UserRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,6 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,7 +19,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class AccountControllerE2ETest {
+class UserControllerE2ETest {
     @LocalServerPort
     private int port;
 
@@ -27,19 +27,20 @@ class AccountControllerE2ETest {
     private TestRestTemplate testRestTemplate = new TestRestTemplate("carlota@comillas.edu", "hola");
 
     @Autowired
-    AccountRepository repository;
+    UserRepository repository;
+
 
     @Test
     public void return_ok_when_getAll() {
         //given
-        List<Account> expextedResult = (List<Account>) repository.findAll();
-        String url = "http://localhost:" + Integer.toString(port) + "/api/accounts/allAccounts";
+        List<User> expextedResult = (List<User>) repository.findAll();
+        String url = "http://localhost:" + Integer.toString(port) + "/api/users/allUsers";
         HttpHeaders headers = HttpHeaders.EMPTY;
 
         HttpEntity<String> entity = new HttpEntity<>(headers);
 
         //when
-        ResponseEntity<List<Account>> result = testRestTemplate.exchange(url, HttpMethod.GET, entity, new ParameterizedTypeReference<List<Account>>() {
+        ResponseEntity<List<User>> result = testRestTemplate.exchange(url, HttpMethod.GET, entity, new ParameterizedTypeReference<List<User>>() {
         });
 
         //then
@@ -49,16 +50,16 @@ class AccountControllerE2ETest {
     }
 
     @Test
-    void return_account_when_get_by_user() {
+    void return_account_when_get_by_account() {
         //given
-        List<Account> expextedResult = (List<Account>) repository.accByUser(1L);
-        String url = "http://localhost:" + Integer.toString(port) + "/api/accounts/byUser/1";
+        List<User> expextedResult = (List<User>) repository.usersByAcc(1L);
+        String url = "http://localhost:" + Integer.toString(port) + "/api/users/byAccount/1";
         HttpHeaders headers = HttpHeaders.EMPTY;
 
         HttpEntity<String> entity = new HttpEntity<>(headers);
 
         //when
-        ResponseEntity<List<Account>> result = testRestTemplate.exchange(url, HttpMethod.GET, entity, new ParameterizedTypeReference<List<Account>>() {
+        ResponseEntity<List<User>> result = testRestTemplate.exchange(url, HttpMethod.GET, entity, new ParameterizedTypeReference<List<User>>() {
         });
 
         //then
@@ -67,16 +68,16 @@ class AccountControllerE2ETest {
     }
 
     @Test
-    void return_account_when_get_by_id() {
+    void return_user_when_get_by_id() {
         //given
-        Account expextedResult = repository.findById(1L).get();
-        String url = "http://localhost:" + Integer.toString(port) + "/api/accounts/getById/1";
+        User expextedResult = repository.findById(1L).get();
+        String url = "http://localhost:" + Integer.toString(port) + "/api/users/getById/1";
         HttpHeaders headers = HttpHeaders.EMPTY;
 
         HttpEntity<String> entity = new HttpEntity<>(headers);
 
         //when
-        ResponseEntity<Account> result = testRestTemplate.exchange(url, HttpMethod.GET, entity, new ParameterizedTypeReference<Account>() {
+        ResponseEntity<User> result = testRestTemplate.exchange(url, HttpMethod.GET, entity, new ParameterizedTypeReference<User>() {
         });
 
         //then
@@ -84,14 +85,13 @@ class AccountControllerE2ETest {
         Assertions.assertEquals(expextedResult, result.getBody());
 
     }
-
     @Test
     void return_ok_when_delete() {
         //given
-        Optional<Account> expectedResult = repository.findById(1L);
+        Optional<User> expectedResult = repository.findById(1L);
 
         Boolean expextedResult = expectedResult.isPresent();
-        String url = "http://localhost:" + Integer.toString(port) + "/api/accounts/delete/1";
+        String url = "http://localhost:" + Integer.toString(port) + "/api/users/delete/1";
         HttpHeaders headers = HttpHeaders.EMPTY;
 
         HttpEntity<String> entity = new HttpEntity<>(headers);
@@ -105,25 +105,43 @@ class AccountControllerE2ETest {
         Assertions.assertEquals(expextedResult, result.getBody());
 
     }
-
-
-    //happy path
     @Test
     void return_created_when_valid_POST() {
         //given
-        Account account = new Account("ES21000000000000005",300,"STANDARD");
-        Account expectedResult = repository.save(account);
-        String url = "http://localhost:" + Integer.toString(port) + "/api/accounts/save";
+        User user = new User("00111222C","Juan","Gutierrez","hola","juan@comillas.edu","STANDARD");
+        User expectedResult = repository.save(user);
+        String url = "http://localhost:" + Integer.toString(port) + "/api/users/save";
         HttpHeaders headers = HttpHeaders.EMPTY;
-        HttpEntity<Account> entity = new HttpEntity<>(account,headers);
+        HttpEntity<User> entity = new HttpEntity<>(user,headers);
 
         //when
-        ResponseEntity<Account> result = testRestTemplate.exchange(url, HttpMethod.POST, entity, new ParameterizedTypeReference<Account>(){} );
+        ResponseEntity<User> result = testRestTemplate.exchange(url, HttpMethod.POST, entity, new ParameterizedTypeReference<User>(){} );
 
         //then
-        Assertions.assertEquals(result.getBody(), expectedResult);
+        Assertions.assertEquals(result.getBody().getFirstName(), expectedResult.getFirstName());
+        Assertions.assertEquals(result.getBody().getEmail(), expectedResult.getEmail());
+        Assertions.assertEquals(result.getBody().getDni(), expectedResult.getDni());
         Assertions.assertEquals(HttpStatus.CREATED, result.getStatusCode());
 
     }
+    @Test
+    void return_user_when_get_by_email() {
+        //given
+        User expextedResult = repository.findByEmail("carlota@comillas.edu");
+        String url = "http://localhost:" + Integer.toString(port) + "/api/users/getByEmail/carlota@comillas.edu";
+        HttpHeaders headers = HttpHeaders.EMPTY;
+
+        HttpEntity<String> entity = new HttpEntity<>(headers);
+
+        //when
+        ResponseEntity<User> result = testRestTemplate.exchange(url, HttpMethod.GET, entity, new ParameterizedTypeReference<User>() {
+        });
+
+        //then
+        Assertions.assertEquals(HttpStatus.OK, result.getStatusCode());
+        Assertions.assertEquals(expextedResult, result.getBody());
+
+    }
+
 
 }

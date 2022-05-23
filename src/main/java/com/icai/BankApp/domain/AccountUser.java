@@ -20,7 +20,7 @@ public class AccountUser {
     private @Column("U_ID") Long u_id;
 
 
-    private AccountUser(Long account_id, Long user_id){
+    public AccountUser(Long account_id, Long user_id){
         this.a_id = account_id;
         this.u_id = user_id;
     }

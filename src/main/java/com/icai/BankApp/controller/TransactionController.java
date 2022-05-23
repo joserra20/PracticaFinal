@@ -20,24 +20,29 @@ public class TransactionController {
     TransactionService transactionService;
 
     @GetMapping("/getAll")
-    public ResponseEntity<List<Transaction>> getAllAccounts(){
+    public ResponseEntity<List<Transaction>> getAllTransactions(){
         return ResponseEntity.ok().body(transactionService.getAllTransactions()) ;
 
     }
 
     @GetMapping("/getByAccount/{id}")
-    public ResponseEntity<List<Transaction>> getAccByUser(@PathVariable("id") Long userId){
+    public ResponseEntity<List<Transaction>> getTranByAcc(@PathVariable("id") Long userId){
         return ResponseEntity.ok().body(transactionService.getTransactionByAccount(userId)) ;
+
+    }
+    @GetMapping("/getById/{id}")
+    public ResponseEntity<Transaction> getTranById(@PathVariable("id") Long userId){
+        return ResponseEntity.ok().body(transactionService.getTransactionId(userId).get()) ;
 
     }
 
     @GetMapping("/getByDate/{date}")
-    public ResponseEntity<List<Transaction>> getAccountByDate(@PathVariable("date") String date){
+    public ResponseEntity<List<Transaction>> getTranByDate(@PathVariable("date") String date){
         return ResponseEntity.ok().body(transactionService.getTransactionByDate(LocalDate.parse(date)));
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Boolean> deleteAccountById(@PathVariable("id") Long id) {
+    public ResponseEntity<Boolean> deleteTranById(@PathVariable("id") Long id) {
         Optional<Transaction> transaction = transactionService.getTransactionId(id);
         if (transaction!=null){
             transactionService.deleteTransaction(transaction.get());
@@ -47,7 +52,7 @@ public class TransactionController {
     }
 
     @PostMapping( "/save")
-    public ResponseEntity<Transaction> saveUser( @RequestBody Transaction transaction) {
+    public ResponseEntity<Transaction> save( @RequestBody Transaction transaction) {
 
         Transaction t = transactionService.save(transaction);
         return ResponseEntity
