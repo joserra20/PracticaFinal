@@ -12,8 +12,8 @@ import java.util.List;
 @Repository
 public interface AccountRepository extends CrudRepository<Account,Long> {
 
-    @Query("SELECT * FROM ACCOUNT WHERE ACCOUNT.IBAN = ?1 ")
-    Account getAccountByIban(String iban);
+    @Query("SELECT * FROM ACCOUNT WHERE ACCOUNT.IBAN = iban ")
+    Account getAccountByIban(@Param("iban") String iban);
 
 
     @Query("""
