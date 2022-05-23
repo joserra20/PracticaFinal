@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>BankApp - Crear cuenta bancaria</title>
+  <title>BankApp - Usuarios</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="vendors/feather/feather.css">
   <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
@@ -44,8 +44,8 @@
       <div class="navbar-menu-wrapper d-flex align-items-top">
         <ul class="navbar-nav">
           <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-            <h1 class="welcome-text">Interfaz de <span class="text-black fw-bold nombre">administración</span></h1>
-            <h3 class="welcome-sub-text">Desde aquí es posible visualizar y gestionar usuarios, cuentas y transacciones.</h3>
+            <h1 class="welcome-text">Nuestras <span class="text-black fw-bold nombre">tarifas</span></h1>
+            <h3 class="welcome-sub-text">Ofrecemos tarifas competitivas a nuestros clientes con muchas ventajas.</h3>
           </li>
         </ul>
         <ul class="navbar-nav ms-auto">
@@ -55,8 +55,11 @@
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
               <div class="dropdown-header text-center">
                 <img class="img-md rounded-circle" src="images/faces/face8.jpg" alt="Profile image">
+                <p class="mb-1 mt-3 font-weight-semibold nombrec">NOMBRE COMPLETO</p>
+                <p class="fw-light text-muted mb-0">allenmoreno@gmail.com</p>
               </div>
-              <a class="dropdown-item" href="/auth/logout"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
+              <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> My Profile <span class="badge badge-pill badge-danger">1</span></a>
+              <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
             </div>
           </li>
         </ul>
@@ -72,39 +75,21 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="admin.html">
+            <a class="nav-link" href="/">
               <i class="mdi mdi-grid-large menu-icon"></i>
               <span class="menu-title">Inicio</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="users.html">
-              <i class="mdi mdi-account-multiple menu-icon"></i>
-              <span class="menu-title">Usuarios</span>
+            <a class="nav-link" href="/myTransactions.html">
+              <i class="mdi mdi-cash-multiple menu-icon"></i>
+              <span class="menu-title">Mis transacciones</span>
             </a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="accounts.html">
-              <i class="mdi mdi-view-headline menu-icon"></i>
-              <span class="menu-title">Cuentas</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="transactions.html">
-              <i class="mdi mdi-cash-multiple menu-icon"></i>
-              <span class="menu-title">Transacciones</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="fees.html">
+            <a class="nav-link" href="fees2.html">
               <i class="mdi mdi-coin menu-icon"></i>
               <span class="menu-title">Fees</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="pagina.html">
-              <i class="mdi mdi-coin menu-icon"></i>
-              <span class="menu-title">Configuracion</span>
             </a>
           </li>
         </ul>
@@ -123,37 +108,21 @@
                         <!-- CONTENIDO PRINICIPAL -->
 
 
-                          <h3>Crear nueva cuenta</h3>
-                          <form class="forms-sample">
-                          
-                            <div class="row">
-                              <div class="form-group col-6">
-                                <label for="ibanInput">IBAN</label>
-                                <input class="form-control p-input" id="ibanInput"></input>
-                            </div>
-                            <div class="form-group col-6">
-                              <label for="balanceInput">Saldo inicial</label>
-                              <input class="form-control p-input" id="balanceInput"></input>
+                          <h3>Fees</h3>
+                          <p>En esta página se muestran los diferentes tipos de comisión.</p>
+                          <!-- Tabla principal -->
+                          <div id="containerTabla">
+                            <h3 id="titulo-tabla"></h3>
+                            <table id="example" class="table table-hover table-responsive  mt-1" width="100%"></table>
                           </div>
-                        </div>
-                        <div class="row">
-                          <div class="form-group col-6">
-                            <label for="emailInput">DNI Titular</label>
-                            <input class="form-control p-input" id="emailInput" aria-describedby="emailHelp" placeholder="DNI Titular">
-                        </div>
-                        <div class="form-group col-6">
-                            <label for="passwordInput">Tipo</label>
-                            <input  class="form-control p-input" id="tipoInput" placeholder="STANDARD">
-                        </div>
-                        </div>
-                      
-                            <div class="col-12">
-                                <button type="submit" onclick="nuevaCuenta();" class="btn btn-primary">Crear</button>
-                            </div>
-                        </form>
+                          <div id="cuentas">
+                            <h3 id="tituloCuentas">Nombre</h3>
+                            Cuentas asociadas:
+                            <table id="tablaCuentas" class="table table-hover">
 
-
-
+                            </table>
+                            <button class="btn" id="btnBorrar">Eliminar usuario</button>
+                          </div>
                       </div>
                     </div>
                   </div>
@@ -180,8 +149,8 @@
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.4/b-2.2.2/b-colvis-2.2.2/sc-2.0.5/datatables.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>  
 <!-- Script Propio -->
-<script src="newUser.js"></script>
-<script src="js/template.js"></script>
+<script src="fees.js"></script>
+<script>cargarUsuarios();</script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
   <script src="vendors/chart.js/Chart.min.js"></script>

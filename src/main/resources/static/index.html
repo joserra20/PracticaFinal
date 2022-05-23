@@ -77,6 +77,18 @@
               <span class="menu-title">Inicio</span>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/myTransactions.html">
+              <i class="mdi mdi-cash-multiple menu-icon"></i>
+              <span class="menu-title">Mis transacciones</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="fees2.html">
+              <i class="mdi mdi-coin menu-icon"></i>
+              <span class="menu-title">Fees</span>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- partial -->
@@ -107,7 +119,8 @@
                             <table id="tablaCuentas" class="table table-hover">
 
                             </table>
-                            <button class="btn" id="btnBorrar">Eliminar cuenta</button>
+                            <button class="btn" onclick="window.location.href='transactionsSearch.html';"); id="btnTransacciones">Ver transacciones</button>
+                            <button class="btn" onclick="alert('Para eliminar la cuenta, debes contactar con tu banco.');" id="btnBorrar">Eliminar cuenta</button>
                           </div>
                       </div>
                     </div>
