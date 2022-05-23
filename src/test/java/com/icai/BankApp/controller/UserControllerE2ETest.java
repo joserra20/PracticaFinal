@@ -70,8 +70,8 @@ class UserControllerE2ETest {
     @Test
     void return_user_when_get_by_id() {
         //given
-        User expextedResult = repository.findById(1L).get();
-        String url = "http://localhost:" + Integer.toString(port) + "/api/users/getById/1";
+        User expextedResult = repository.findById(2L).get();
+        String url = "http://localhost:" + Integer.toString(port) + "/api/users/getById/2";
         HttpHeaders headers = HttpHeaders.EMPTY;
 
         HttpEntity<String> entity = new HttpEntity<>(headers);

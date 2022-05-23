@@ -69,8 +69,9 @@ class AccountControllerE2ETest {
     @Test
     void return_account_when_get_by_id() {
         //given
-        Account expextedResult = repository.findById(1L).get();
-        String url = "http://localhost:" + Integer.toString(port) + "/api/accounts/getById/1";
+
+        Account expextedResult = repository.findById(2L).get();
+        String url = "http://localhost:" + Integer.toString(port) + "/api/accounts/getById/2";
         HttpHeaders headers = HttpHeaders.EMPTY;
 
         HttpEntity<String> entity = new HttpEntity<>(headers);
