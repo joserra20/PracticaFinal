@@ -7,6 +7,11 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,7 +27,11 @@ public class User {
 
     private @Column("PASSWORD") String password;
 
-    private @Column("EMAIL") String email;
+    private @Column("EMAIL")
+    @NotNull
+    @NotEmpty
+    @Pattern(regexp ="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$")
+    String email;
 
     private @Column("USER_TYPE") String userType;
 
@@ -33,6 +42,11 @@ public class User {
         this.password = password;
         this.email = email;
         this.userType = userType;
+    }
+
+    @Valid
+    public void setEmail(String email){
+        this.email=email;
     }
 
 

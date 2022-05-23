@@ -143,5 +143,25 @@ class UserControllerE2ETest {
 
     }
 
+    @Test
+    void return_bad_request_when_invalid_POST() {
+        //given
+        User user = new User("00111222C","Juan","Gutierrez","hola","juancomillas.edu","STANDARD");
+        //User expectedResult = repository.save(user);
+        String url = "http://localhost:" + Integer.toString(port) + "/api/users/save";
+        HttpHeaders headers = HttpHeaders.EMPTY;
+        HttpEntity<User> entity = new HttpEntity<>(user,headers);
+
+        //when
+        ResponseEntity<User> result = testRestTemplate.exchange(url, HttpMethod.POST, entity, new ParameterizedTypeReference<User>(){} );
+
+        //then
+
+        Assertions.assertEquals(HttpStatus.BAD_REQUEST, result.getStatusCode());
+
+    }
+
+
+
 
 }

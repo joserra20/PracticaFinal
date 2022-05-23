@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
@@ -51,7 +52,7 @@ public class UserController {
     }
 
     @PostMapping( "/save")
-    public ResponseEntity<User> saveUser( @RequestBody User user) {
+    public ResponseEntity<User> saveUser( @Valid @RequestBody User user) {
         LOGGER.info(user.getFirstName());
         String hashedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(hashedPassword);
