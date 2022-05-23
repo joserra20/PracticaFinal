@@ -1,5 +1,5 @@
 # BankApp
-### Práctica Final PAT
+## Práctica Final PAT
 #### José Ramón Porro y Carlota Ciruelos
 ##### 3ºA GITT
 
@@ -28,3 +28,31 @@ En la interfaz de administración se pueden realizar gestiones varias como la cr
 
 Desde la pestaña de cuentas se ofrece una tabla con todas las cuentas que incorpora ordenado por varios campos ascendente y descendente así como una útil barra de búsqueda. Los mensajes de la tabla se encuentran personalizados.
 ##### Transacciones
+
+###Scafolding del proyecto
+Dividimos la carpeta de  main en:
+- Dentro de com.icai.BankApp la dividimos por capas: 
+    1. Config
+    2. Controller: definimos los endpoints
+    3. Domain: entidades del proyecto
+    4. DTO
+    5. Repository: conectamos con la BD
+    6. Service: conecta el controlador con el respositorio
+- Resources:   
+    1. Contiene my_data.sql, schema.sql y propierties.
+    2. Static: con división en css, js y html
+    
+### Bases de datos
+Hay cinco tablas: USER, ACCOUNTS, ACCOUNT_USER, TRANSACTION y FEES. 
+Esas cinco tablas son la base de nuestra aplicación, sobre ellas se construyen las entidades de nuestra aplicación.
+
+### Test: 
+- E2E: son la mayoria y comprueban que se ejecuten los diferentes métodos del flujo de manera correcta.
+- Unitarios: comprueban clases por separado. Lo empleamos para comprobar el uso del @Pattern en el email del User
+
+### Seguridad
+- Encriptamos la contraseña para salvaguardar la privacidad del usuario
+- Además hacemos validaciones @Pattern para parámetros como email
+
+
+
