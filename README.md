@@ -5,6 +5,12 @@
 
 BankApp es una aplicación web cuyo objetivo es la gestión de una entidad bancaria y similares.
 #### Login (Security and authentication)
+##### Credenciales de acceso
+joserra@comillas.edu
+Contraseña: hola
+
+carlota@comillas.edu
+Contraseña: hola
 ![](login1.png)
 
 El proyecto cuenta con la dependencia de Spring Security configurada. Para acceder al sistema es necesario rellenar un formulario de login personalizado. También se encuentran protegidas las llamadas a las APIs. Además también se emplea para gestionar la sesión de usuario.
@@ -22,9 +28,12 @@ El usuario puede hacer click sobre cualquiera de sus cuentas para ver informaci�
 
 En la interfaz de administración se pueden realizar gestiones varias como la creación de usuarios, creación de cuentas, etc. También es posible gestionar todas las cuentas del sistema y también filtrarlas por titulares. En el menú de la izquierda se despliegan las diferentes áreas de gestión.
 ##### Usuarios
+![](Usuario.png)
+![](newUser.png)
 
 ##### Cuentas
 ![](Cuentas.png)
+
 
 Desde la pestaña de cuentas se ofrece una tabla con todas las cuentas que incorpora ordenado por varios campos ascendente y descendente así como una útil barra de búsqueda. Los mensajes de la tabla se encuentran personalizados.
 ##### Transacciones
@@ -45,8 +54,12 @@ Dividimos la carpeta de  main en:
 ### Bases de datos
 Hay cinco tablas: USER, ACCOUNTS, ACCOUNT_USER, TRANSACTION y FEES. 
 Esas cinco tablas son la base de nuestra aplicación, sobre ellas se construyen las entidades de nuestra aplicación.
+#### Relacion 'many to many' de ACCOUNT y USER
+![](Query.png)
+Hay una tabla intermedia de relación entre las tablas ACCOUNT y USER dado que tienen una relación n a m. Siendo necesario realizar dos inner join. 
 
 ### Test: 
+(22 tests)
 - E2E: son la mayoria y comprueban que se ejecuten los diferentes métodos del flujo de manera correcta.
 - Unitarios: comprueban clases por separado. Lo empleamos para comprobar el uso del @Pattern en el email del User
 
