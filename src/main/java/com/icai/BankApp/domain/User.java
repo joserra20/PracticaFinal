@@ -44,10 +44,7 @@ public class User {
         this.userType = userType;
     }
 
-    @Valid
-    public void setEmail(String email){
-        this.email=email;
-    }
+
 
 
 }

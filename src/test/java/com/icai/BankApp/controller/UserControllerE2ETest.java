@@ -110,6 +110,7 @@ class UserControllerE2ETest {
         //given
         User user = new User("00111222C","Juan","Gutierrez","hola","juan@comillas.edu","STANDARD");
         User expectedResult = repository.save(user);
+        System.out.println(expectedResult.getFirstName());
         String url = "http://localhost:" + Integer.toString(port) + "/api/users/save";
         HttpHeaders headers = HttpHeaders.EMPTY;
         HttpEntity<User> entity = new HttpEntity<>(user,headers);
